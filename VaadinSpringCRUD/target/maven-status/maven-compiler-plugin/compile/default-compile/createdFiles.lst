@@ -1,0 +1,10 @@
+main/GuidelineEditor$ChangeHandler.class
+main/RootDocumentEditor$ChangeHandler.class
+main/RootDocumentEditor.class
+main/Application.class
+main/RootDocument.class
+main/Guideline.class
+main/VaadinUI.class
+main/RootDocumentRepository.class
+main/GuidelineEditor.class
+main/GuidelineRepository.class
