@@ -4,24 +4,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 
 import com.vaadin.annotations.Theme;
-import com.vaadin.data.Item;
-import com.vaadin.data.fieldgroup.DefaultFieldGroupFieldFactory;
-import com.vaadin.data.fieldgroup.FieldGroup;
 import com.vaadin.data.util.BeanItemContainer;
+import com.vaadin.navigator.Navigator;
 import com.vaadin.server.FontAwesome;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.spring.annotation.SpringUI;
-import com.vaadin.ui.AbstractSelect.ItemCaptionMode;
 import com.vaadin.ui.Button;
-import com.vaadin.ui.ComboBox;
-import com.vaadin.ui.Field;
-import com.vaadin.ui.FormLayout;
 import com.vaadin.ui.Grid;
 import com.vaadin.ui.HorizontalLayout;
-import com.vaadin.ui.Layout;
-import com.vaadin.ui.Notification;
-import com.vaadin.ui.Panel;
-import com.vaadin.ui.Table;
+import com.vaadin.ui.MenuBar;
+import com.vaadin.ui.MenuBar.MenuItem;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
@@ -33,6 +25,9 @@ public class VaadinUI extends UI {
 	private final GuidelineRepository repo;
 	private final GuidelineEditor editor;
 
+//	Navigator navigator;
+//    protected static final String MAINVIEW = "main";
+	
 	private final Grid grid;
 	private final TextField filter;
 	private final Button addNewBtn;
@@ -50,10 +45,15 @@ public class VaadinUI extends UI {
 	protected void init(VaadinRequest request) {
 		
 		// build layout
+		MenuBar menuBar = new MenuBar();
+		MenuItem submenu1 = menuBar.addItem("RootDocuments", null);
+		MenuItem submenu2 = menuBar.addItem("Guidelines", null);
+		MenuItem submenu3 = menuBar.addItem("Evidences", null);
+		
 		HorizontalLayout actions = new HorizontalLayout(filter, addNewBtn);
-		VerticalLayout mainLayout = new VerticalLayout(actions, grid, editor);
+		VerticalLayout mainLayout = new VerticalLayout(menuBar, actions, grid, editor);
 		setContent(mainLayout);
-
+		
 		// Configure layouts and components
 		actions.setSpacing(true);
 		mainLayout.setMargin(true);
